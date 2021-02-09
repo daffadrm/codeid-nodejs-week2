@@ -8,6 +8,7 @@ const router = Router();
 //findAll
 //router.route('/').get(regionCtrl.allRegions);
 
+//
 router.get('/', async (req, res) => {
   const regions = await sequelize.query('SELECT region_id,region_name FROM regions', {
     type: sequelize.QueryTypes.SELECT,
