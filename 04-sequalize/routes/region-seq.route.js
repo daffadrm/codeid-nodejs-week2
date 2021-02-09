@@ -1,21 +1,12 @@
+// 1. import module Router & sequalize
 import { Router } from 'express';
-import { sequelize } from '../models';
-//import regionCtrl from '../controllers/regions.controller'
 
-//declare const
+//2. create object Router dan simpan di variable router
 const router = Router();
 
-//findAll
-//router.route('/').get(regionCtrl.allRegions);
-
-//
+// 3. this function use method or function sequalize
 router.get('/', async (req, res) => {
-  const regions = await sequelize.query('SELECT region_id,region_name FROM regions', {
-    type: sequelize.QueryTypes.SELECT,
-    model: req.context.models.Regions,
-    mapToModel: true
-  });
-  // const emps = await req.context.models.Employees.findAll();
+  const regions = await req.context.models.Regions.findAll();
   return res.send(regions);
 });
 
@@ -27,17 +18,20 @@ router.get('/:regionId', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  const { region_id, region_name} = req.body;
   const regions = await req.context.models.Regions.create({
-    region_id: req.body.region_id,
-    region_name: req.body.region_name,
+    region_id: region_id,
+    region_name: region_name,
   });
 
   return res.send(regions);
 });
 
+/*  sesuaikan parameter yg diinput sama dengan attribute region_id di table
+ setelah clause where */
 router.delete('/:regionId', async (req, res) => {
   const result = await req.context.models.Regions.destroy({
-    where: { id: req.params.regionId },
+    where: { region_id: req.params.regionId },
   });
 
   return res.send(true);

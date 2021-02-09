@@ -1,3 +1,9 @@
+/*  Jika database already exist, gunakan module sequalize-auto
+    untuk generate schema database secara reverse-engineering,
+    buat arrow function regions lalu deklarasikan class model. 
+    constructo sequalize(modelName, attributes,options)
+ */
+
 const regions = (sequelize, DataTypes) => {
     const Regions = sequelize.define('regions', {
         region_id: {
@@ -12,12 +18,12 @@ const regions = (sequelize, DataTypes) => {
         }
     }, {
         sequelize,
-        tableName: 'regions',
+        tableName: 'regions', // nama table di database
         schema: 'public',
         timestamps: false,
         indexes: [
             {
-                name: "regions_pkey",
+                name: "region_id_pk", //format pk : kolomid_id_pk
                 unique: true,
                 fields: [
                     { name: "region_id" },
