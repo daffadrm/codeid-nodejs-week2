@@ -1,4 +1,5 @@
-import { sequelize } from '../models/index.model';
+import { sequelize, Op } from '../models/index.model';
+
 
 // put your business logic using raw query
 const findRegionsRawSQL = async (req, res) => {
@@ -6,26 +7,50 @@ const findRegionsRawSQL = async (req, res) => {
         type: sequelize.QueryTypes.SELECT,
         model: req.context.models.Regions,
         mapToModel: true
-      });
-      return res.send(regions);
+    });
+    return res.send(regions);
 }
 
 // put your business logic using method sequalize
 const findRegionsMethod = async (req, res) => {
     const regions = await req.context.models.Regions.findAll();
-    return res.send(regions); 
+    return res.send(regions);
 }
 
 // put your business logic using method sequalize
-const filterByName = async (req, res) => {
-    const regions = await req.context.models.Regions.findAll({
-        
-    });
-    return res.send(regions); 
+// findAll = select * from regions
+const findAll = async (req, res) => {
+    const regions = await req.context.models.Regions.findAll({});
+    return res.send(regions);
 }
 
+// findByPK
+const findRegionById = async (req, res) => {
+    const regions = await req.context.models.Regions.findByPk(
+        req.params.regionId,
+    );
+    return res.send(regions);
+}
+
+/*  filter by region_name 
+ sql : select * from region where region_name like 'As%'
+ stelah klausa where tentukan nama field yg akan difilter */
+const filterRegionByName = async (req, res) => {
+    const regions = await req.context.models.Regions.findAll(
+        {
+            where:
+                { region_name: {[Op.like]: req.params.regionName+"%"}}
+
+        }
+    );
+    return res.send(regions);
+}
+
+
 // Gunakan export default agar semua function bisa dipakai di file lain.
-export default{
+export default {
     findRegionsRawSQL,
-    findRegionsMethod
+    findRegionsMethod,
+    findAll,
+    filterRegionByName
 }

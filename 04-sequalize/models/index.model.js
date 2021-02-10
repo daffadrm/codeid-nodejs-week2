@@ -11,6 +11,9 @@ const sequelize = new Sequelize(
   },
 );
 
+// tambahkan object Sequelize Op dan export spy bisa di pake di controller
+const Op = Sequelize.Op;
+
 //3. import all model dan store di variable models
 const models = {
   Regions: sequelize.import('./region.model'),
@@ -25,5 +28,5 @@ Object.keys(models).forEach(key => {
 });
 
 // 5. export sequalize agar bisa di-call di module lain
-export { sequelize };
+export { sequelize,Op };
 export default models;
