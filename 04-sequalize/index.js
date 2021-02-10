@@ -7,9 +7,7 @@ import express from "express";
 // import model dan routes
 import models, { sequelize } from './models/index.model';
 import routes from './routes/index.route';
-
-
-
+ 
 // 2. let's create express application & store in app
 const port = process.env.PORT || 1337
 const app = express();

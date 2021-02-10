@@ -1,4 +1,3 @@
-import { Router } from 'express';
 import { sequelize } from '../models/index.model';
 
 // put your business logic using raw query
@@ -14,6 +13,14 @@ const findRegionsRawSQL = async (req, res) => {
 // put your business logic using method sequalize
 const findRegionsMethod = async (req, res) => {
     const regions = await req.context.models.Regions.findAll();
+    return res.send(regions); 
+}
+
+// put your business logic using method sequalize
+const filterByName = async (req, res) => {
+    const regions = await req.context.models.Regions.findAll({
+        
+    });
     return res.send(regions); 
 }
 

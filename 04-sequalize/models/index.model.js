@@ -14,6 +14,7 @@ const sequelize = new Sequelize(
 //3. import all model dan store di variable models
 const models = {
   Regions: sequelize.import('./region.model'),
+  Countries: sequelize.import('./countries.model')
 };
 
 //4. create relation OneToMany | ManyToMany
