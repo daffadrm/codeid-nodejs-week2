@@ -16,8 +16,8 @@ const Op = Sequelize.Op;
 
 //3. import all model dan store di variable models
 const models = {
-  Regions: sequelize.import('./region.model'),
-  Countries: sequelize.import('./countries.model')
+  Regions: sequelize.import('./RegionModel'),
+  Countries: sequelize.import('./CountriesModel')
 };
 
 //4. create relation OneToMany | ManyToMany
