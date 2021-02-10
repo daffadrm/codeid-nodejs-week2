@@ -1,6 +1,6 @@
 // 1. import module Router
 import { Router } from 'express';
-import indexCtrl from '../controllers/index.controller'
+import indexCtrl from '../controllers/IndexController'
 
 //2. create object Router dan simpan di variable router
 const router = Router();

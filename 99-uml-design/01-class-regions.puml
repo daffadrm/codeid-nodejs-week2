@@ -1,8 +1,8 @@
 @startuml class regions
 
   interface models.IndexModel {
-      +sequelize
-      +models
+      +sequelize : Sequelize
+      +models : RegionModel
       +Op : sequelize
   }
 
@@ -14,29 +14,29 @@
   models.IndexModel --> models.RegionModel
 
   interface routes.IndexRoute{
-    +regions : regionroute
+    +regions : RegionRoute
   }
 
   class routes.RegionRoute{
-    +post : http
-    +get  :http
-    +put : http
-    +delete : http
+    +post : Router()
+    +get  :Router()
+    +put : Router()
+    +delete : Router()
   }
 
   
 
   class Index {
-
+    +app : express()
   }
 
   interface controllers.IndexController{
-
+    +regions : RegionsController
   }
 
   class controllers.RegionsController{
-    +findRegionSQLRaw
-    +findRegionMethod
+    +findRegionSQLRaw()
+    +findRegionMethod()
   }
 
   routes.IndexRoute --> routes.RegionRoute

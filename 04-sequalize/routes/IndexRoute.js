@@ -6,7 +6,7 @@
 
 //import regions from './region-raw.route';
 //import regions from './region-seq.route';
-import regions from './region-seqctrl.route';
+import regions from './RegionSeqCtrl';
 
 
 export default {

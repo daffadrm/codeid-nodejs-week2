@@ -1,4 +1,4 @@
-import { sequelize, Op } from '../models/index.model';
+import { sequelize, Op } from '../models/IndexModel';
 
 
 // put your business logic using raw query
