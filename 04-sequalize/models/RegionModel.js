@@ -32,6 +32,11 @@ const regions = (sequelize, DataTypes) => {
         ]
     });
 
+    // table regions hasMany Countries, set foreignkey sesuai relasi di table    
+    Regions.associate = models => {
+        Regions.hasMany(models.Countries, {foreignKey: 'region_id', onDelete: 'CASCADE' });
+      };
+
     return Regions;
 };
 

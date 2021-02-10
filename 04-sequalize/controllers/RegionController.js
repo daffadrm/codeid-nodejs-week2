@@ -20,7 +20,13 @@ const findRegionsMethod = async (req, res) => {
 // put your business logic using method sequalize
 // findAll = select * from regions
 const findAll = async (req, res) => {
-    const regions = await req.context.models.Regions.findAll({});
+    const regions = await req.context.models.Regions.findAll(
+        {
+            include: [{
+                model: req.context.models.Countries
+            }]
+        }
+    );
     return res.send(regions);
 }
 
@@ -39,8 +45,8 @@ const findRegionById = async (req, res) => {
 const filterRegionByName = async (req, res) => {
     const regions = await req.context.models.Regions.findAll(
         {
-            where: 
-                { region_name: {[Op.like]: req.params.regionName+"%"}}
+            where:
+                { region_name: { [Op.like]: req.params.regionName + "%" } }
 
         }
     );
