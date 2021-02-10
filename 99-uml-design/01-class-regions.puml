@@ -1,22 +1,23 @@
 @startuml class regions
 
-  interface models.indexModel {
+  interface models.IndexModel {
       +sequelize
       +models
+      +Op : sequelize
   }
 
-  class models.regionModel{
+  class models.RegionModel{
      +region_id : integer
-     +region_name : string 
+     +region_name : string
   }
 
-  models.indexModel --> models.regionModel
+  models.IndexModel --> models.RegionModel
 
-  interface routes.indexRoute{
+  interface routes.IndexRoute{
     +regions : regionroute
   }
 
-  class routes.regionRoute{
+  class routes.RegionRoute{
     +post : http
     +get  :http
     +put : http
@@ -25,22 +26,27 @@
 
   
 
-  class index {
+  class Index {
 
   }
 
-  class controllers.regionsController{
+  interface controllers.IndexController{
+
+  }
+
+  class controllers.RegionsController{
     +findRegionSQLRaw
     +findRegionMethod
   }
 
-  routes.indexRoute --> routes.regionRoute
-  routes.regionRoute -left-> models.indexModel
-  routes.regionRoute -left-> controllers.regionsController
-  controllers.regionsController -left-> models.indexModel
+  routes.IndexRoute --> routes.RegionRoute
+  routes.RegionRoute -left-> models.IndexModel
+  routes.RegionRoute -right-> controllers.IndexController
+  controllers.RegionsController -left-> models.IndexModel
+  controllers.IndexController --> controllers.RegionsController
 
-  index --> models.indexModel
-  index --> routes.indexRoute
+  Index --> models.IndexModel
+  Index --> routes.IndexRoute
 
 
 

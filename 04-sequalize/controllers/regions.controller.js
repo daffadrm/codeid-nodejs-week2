@@ -34,11 +34,12 @@ const findRegionById = async (req, res) => {
 
 /*  filter by region_name 
  sql : select * from region where region_name like 'As%'
- stelah klausa where tentukan nama field yg akan difilter */
+ stelah klausa where tentukan nama field yg akan difilter 
+ pastikan object Op di export dari index.model*/
 const filterRegionByName = async (req, res) => {
     const regions = await req.context.models.Regions.findAll(
         {
-            where:
+            where: 
                 { region_name: {[Op.like]: req.params.regionName+"%"}}
 
         }
