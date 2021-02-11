@@ -12,5 +12,7 @@ recommended gunakan sequelize method */
 //router.get('/', indexCtrl.regions.findRegionsMethod);
 
 router.get('/', indexCtrl.regions.findAll);
+router.post('/', indexCtrl.regions.createRegion);
+
 router.get('/search/:regionName', indexCtrl.regions.filterRegionByName);
 export default router;

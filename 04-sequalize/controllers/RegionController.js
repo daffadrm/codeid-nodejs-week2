@@ -38,6 +38,17 @@ const findRegionById = async (req, res) => {
     return res.send(regions);
 }
 
+// insert region
+const createRegion = async (req, res) => {
+    const { region_id, region_name } = req.body;
+    const regions = await req.context.models.Regions.create({
+      region_id: region_id,
+      region_name: region_name,
+    });
+  
+    return res.send(regions);
+}
+
 /*  filter by region_name 
  sql : select * from region where region_name like 'As%'
  stelah klausa where tentukan nama field yg akan difilter 
@@ -59,5 +70,6 @@ export default {
     findRegionsRawSQL,
     findRegionsMethod,
     findAll,
-    filterRegionByName
+    filterRegionByName,
+    createRegion
 }

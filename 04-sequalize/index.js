@@ -1,5 +1,6 @@
 // 1. pastikan selalu import dotenv di line pertama
 import 'dotenv/config';
+//import {} from 'dotenv/config'
 //CORS is used to restrict access between web applications
 import cors from "cors";
 import express from "express";
@@ -50,6 +51,7 @@ sequelize.sync({ force: dropDatabaseSync }).then(async () => {
   );
 });
 
+export default app;
 
 /* console.log('Hello Fullstack');
 console.log(process.env.PASSWORD); */
