@@ -1,0 +1,18 @@
+@startuml CartSequenceDiagram
+start
+if (is Cart Already Exist ?) then (no)
+    :Create New Cart;
+else (yes)
+    
+endif
+
+repeat
+  :read data items;
+  :inset into table order_detail;
+repeat while (data masih ada ?) is (yes)
+->no;
+stop
+      
+
+
+@enduml
