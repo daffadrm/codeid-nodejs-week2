@@ -51,6 +51,7 @@ sequelize.sync({ force: dropDatabaseSync }).then(async () => {
   );
 });
 
+// hanya untuk test only
 export default app;
 
 /* console.log('Hello Fullstack');
