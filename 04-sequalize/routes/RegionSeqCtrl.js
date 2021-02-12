@@ -13,7 +13,8 @@ recommended gunakan sequelize method */
 
 router.get('/', indexCtrl.regions.findAll);
 router.post('/', indexCtrl.regions.createRegion);
-router.post('/bulk', indexCtrl.apiBulk.createRegionCountries,indexCtrl.regions.findAll);
+router.post('/bulk', indexCtrl.apiCartOrder.createRegionCountries,indexCtrl.regions.findAll);
+router.post('/transaction', indexCtrl.apiCartOrder.createRegionCountries,indexCtrl.regions.findAll);
 
 router.get('/search/:regionName', indexCtrl.regions.filterRegionByName);
 export default router;

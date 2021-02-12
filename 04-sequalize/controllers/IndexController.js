@@ -1,7 +1,7 @@
 import regions from "./RegionController"
-import apiBulk from "./ApiOneToMany";
+import apiCartOrder from "./ApiCartOrder";
 
 export default {
     regions,
-    apiBulk
+    apiCartOrder
 }
