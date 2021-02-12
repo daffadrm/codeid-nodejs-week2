@@ -30,7 +30,6 @@ app.use(async (req, res, next) => {
  param 2 : call function routes di folder routes */
 app.use('/regions', routes.regions);
 
-
  /* 4. Create Connection pooling to postgresql
  force  : true => all table will be drop, then re-create
  force : false => table already exist akan diskip, jika di deploy di production

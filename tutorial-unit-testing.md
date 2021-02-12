@@ -39,5 +39,4 @@ step by step unit testing :
   }   
 
 5. buat folder test di dalam folder 04-sequelize, buat file RegionTest.js
-
 6. Run via debug

@@ -7,13 +7,20 @@ const chatEmitter = new EventEmitter()
 
 const port = process.env.PORT || 1337
 const app = express()
-app.get('/', respondText)
+
+router.use(function (req, res, next) {
+    console.log('Time:', Date.now())
+    next()
+});
+
+
+/* app.get('/', respondText)
 app.get('/json', respondJson)
 app.get('/echo', respondEcho)
 app.get('/static/*', respondStatic)
 app.get('/chat', respondChat)
 app.get('/sse', respondSSE);
-
+ */
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
 
