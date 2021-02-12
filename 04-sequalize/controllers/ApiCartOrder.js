@@ -43,7 +43,7 @@ const createRegionCountries = async (req, res, next) => {
 const regionTransacton = async (req, res, next) => {
     const t = await sequelize.transaction();
     const { region_id, region_name, countries } = req.body;
-    let regions = null;
+    let regions = null; 
     try {
         
 
