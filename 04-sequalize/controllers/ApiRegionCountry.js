@@ -45,7 +45,6 @@ const regionTransacton = async (req, res, next) => {
     const { region_id, region_name, countries } = req.body;
     let regions = null; 
     try {
-        
 
         //1. check apakah region_id null atau undefineed, jika null,
         // then create region nya
