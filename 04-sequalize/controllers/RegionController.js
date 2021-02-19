@@ -21,11 +21,11 @@ const findRegionsMethod = async (req, res) => {
 // findAll = select * from regions
 const findAll = async (req, res) => {
     const regions = await req.context.models.Regions.findAll(
-        {
+/*         {
             include: [{
                 model: req.context.models.Countries
             }]
-        }
+        } */
     );
     return res.send(regions);
 }
@@ -40,7 +40,8 @@ const findRegionById = async (req, res) => {
 
 // insert region
 const createRegion = async (req, res) => {
-    const { region_id, region_name } = req.body;
+    const { region_id, region_name } = req.body.data;
+    console.log('wait');
     const regions = await req.context.models.Regions.create({
       region_id: region_id,
       region_name: region_name,
@@ -48,6 +49,27 @@ const createRegion = async (req, res) => {
   
     return res.send(regions);
 }
+
+const updateRegion = async (req, res) => {
+    const { region_name } = req.body.data;
+    const regions = await req.context.models.Regions.update(
+        {region_name: region_name},// nama attribute yg akan di update
+        {returning: true,where: { region_id: req.params.id } });
+
+
+      return res.send(true);
+}
+
+const deleteRegion = async (req, res) => {
+    const {id} = req.params;
+    const result = await req.context.models.Regions.destroy({
+        where: { region_id: id },
+      });
+    
+      return res.send(true);
+}
+
+
 
 /*  filter by region_name 
  sql : select * from region where region_name like 'As%'
@@ -71,5 +93,7 @@ export default {
     findRegionsMethod,
     findAll,
     filterRegionByName,
-    createRegion
+    createRegion,
+    deleteRegion,
+    updateRegion
 }
